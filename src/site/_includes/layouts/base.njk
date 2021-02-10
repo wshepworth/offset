@@ -14,28 +14,28 @@
   <div class="container">
 
     {% include "header.njk" %}
-<div class="row">
+        <div class="row">
 
-<div class="col-md-6">
-<form id="distance_form">
-    <div class="form-group">
-        <label>Origin: </label>
-        <input class="form-control" id="from_places" placeholder="Enter a location" /> 
-        <input id="origin" name="origin" required="" type="hidden" />
-    </div>
+    <div class="col-md-6">
+        <form id="distance_form">
+            <div class="form-group">
+                <label>Origin: </label>
+                <input class="form-control" id="from_places" placeholder="Enter a location" /> 
+                <input id="origin" name="origin" required="" type="hidden" />
+            </div>
 
-    <div class="form-group">
-        <label>Destination: </label>
-        <input class="form-control" id="to_places" placeholder="Enter a location"/>
-        <input id="destination" name="destination" required="" type="hidden"/>
-    </div>
-    
-    <input class="btn btn-primary" id="submit_btn" type="submit" value="Calculate" />
+            <div class="form-group">
+                <label>Destination: </label>
+                <input class="form-control" id="to_places" placeholder="Enter a location"/>
+                <input id="destination" name="destination" required="" type="hidden"/>
+            </div>
+            
+            <input class="btn btn-primary" id="submit_btn" type="submit" value="Calculate" />
 
-</form>
+        </form>
 
 <div id="result">
-<ul class="list-group" style="margin-top: 40px">
+    <ul class="list-group" style="margin-top: 40px">
 	<li class="list-group-item d-flex justify-content-between align-items-center">Distance (miles): 
         <span id="in_mile" class="badge badge-primary badge-pill"></span>
     </li>

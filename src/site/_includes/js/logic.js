@@ -38,6 +38,7 @@ $(function() {
         if (status != google.maps.DistanceMatrixStatus.OK) {
             $('#result').html(err);
         } else {
+            console.log(response);
             var origin = response.originAddresses[0];
             var destination = response.destinationAddresses[0];
             if (response.rows[0].elements[0].status === "ZERO_RESULTS") {
@@ -61,7 +62,7 @@ $(function() {
 
     // calculate price of Carbon
     function calculateCarbon(distance_in_mile) {
-        $.getJSON('http://api.allorigins.win/get?url=https%3A//api.triptocarbon.xyz/v1/footprint%3Factivity%3D' + distance_in_mile + '10%26activityType%3Dmiles%26country%3Dgbr%26mode%3Dtaxi&callback=?', function (data) {
+        $.getJSON('https://api.allorigins.win/get?url=https%3A//api.triptocarbon.xyz/v1/footprint%3Factivity%3D' + distance_in_mile + '10%26activityType%3Dmiles%26country%3Dgbr%26mode%3Dtaxi&callback=?', function (data) {
             var carbonWeightRaw = JSON.parse(data.contents);
             var carbonWeight = carbonWeightRaw.carbonFootprint;
             $('#carbon_weight').text(carbonWeight);
