@@ -3,13 +3,66 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script  defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC2x1-J5a9hdIUy_xHl8zFRc1FXwWCFlfU"  type="text/javascript"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" id="bootstrap-css" rel="stylesheet" />
     <title>{{ title }}</title>
   </head>
   <body {% if bodyClass %}class="{{ bodyClass }}"{% endif %}>
 
+  <div class="container">
+
+    {% include "header.njk" %}
+<div class="row">
+
+<div class="col-md-6">
+<form id="distance_form">
+    <div class="form-group">
+        <label>Origin: </label>
+        <input class="form-control" id="from_places" placeholder="Enter a location" /> 
+        <input id="origin" name="origin" required="" type="hidden" />
+    </div>
+
+    <div class="form-group">
+        <label>Destination: </label>
+        <input class="form-control" id="to_places" placeholder="Enter a location"/>
+        <input id="destination" name="destination" required="" type="hidden"/>
+    </div>
+    
+    <input class="btn btn-primary" id="submit_btn" type="submit" value="Calculate" />
+
+</form>
+
+<div id="result">
+<ul class="list-group" style="margin-top: 40px">
+	<li class="list-group-item d-flex justify-content-between align-items-center">Distance (miles): 
+        <span id="in_mile" class="badge badge-primary badge-pill"></span>
+    </li>
+	<li class="list-group-item d-flex justify-content-between align-items-center">Distance (km):
+        <span id="in_kilo" class="badge badge-primary badge-pill"></span>
+    </li>
+	<li class="list-group-item d-flex justify-content-between align-items-center">In minutes:
+        <span id="duration_text" class="badge badge-primary badge-pill"></span>
+    </li>
+	<li class="list-group-item d-flex justify-content-between align-items-center">In seconds:
+        <span id="duration_value" class="badge badge-primary badge-pill"></span>
+    </li>
+
+	<li class="list-group-item d-flex justify-content-between align-items-center">Weight of carbon (kg):
+        <span id="carbon_weight" class="badge badge-primary badge-pill"></span>
+    </li>
+
+    <li class="list-group-item d-flex justify-content-between align-items-center">Cost of carbon:
+        <span id="carbon_price" class="badge badge-primary badge-pill"></span>
+    </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
     <div class="container">
-      {% include "header.njk" %}
       {{ content | safe }}
       {% include "footer.njk" %}
     </div>
@@ -17,11 +70,9 @@
     {% set js %}
       {% include "js/core.js" %}
       {% include "js/hello.js" %}
+      {% include "js/logic.js" %}
     {% endset %}
     <script>{{ js | jsmin | safe }}</script>
 
   </body>
 </html>
-
-
-
