@@ -62,29 +62,42 @@ $(function() {
 
     // calculate price of Carbon
     function calculateCarbon(distance_in_mile) {
-        $.getJSON('https://api.allorigins.win/get?url=https%3A//api.triptocarbon.xyz/v1/footprint%3Factivity%3D' + distance_in_mile + '10%26activityType%3Dmiles%26country%3Dgbr%26mode%3Dtaxi&callback=?', function (data) {
+        $.getJSON('https://api.allorigins.win/get?url=https%3A//api.triptocarbon.xyz/v1/footprint%3Factivity%3D' + distance_in_mile + '10%26activityType%3Dmiles%26country%3Ddef%26mode%3Dtaxi&callback=?', function (data) {
             var carbonWeightRaw = JSON.parse(data.contents);
             var carbonWeight = carbonWeightRaw.carbonFootprint;
             $('#carbon_weight').text(carbonWeight);
-            calculatePrice(carbonWeight);
-        });
-    }
-
-    function calculatePrice(carbonWeight) {
-        if (carbonWeight = "NaN") {
-        } else {
             var carbonPrice = carbonWeight * 0.075;
             var carbonPriceFormatted = carbonPrice.toFixed(2);
             $('#carbon_price').text("£" + carbonPriceFormatted);
-        }
+        });
     }
+
 
     // print results on submission of the form
     $('#distance_form').submit(function(e){
         e.preventDefault();
         calculateDistance();
         calculateCarbon();
-        calculatePrice();
+        validateFuelType();
         });
 
+    // assign petrol type
+    function validateFuelType() {
+    var fueltype;
+
+    if(document.getElementById("petrol").checked) {
+        fueltype = "petrol";
+    } else if(document.getElementById("diesel").checked) {
+        fueltype = "diesel";
+    } else if(document.getElementById("unknown").checked) {
+        fueltype = "unknown";
+    }
+
+    console.log(fueltype)
+
+    // Assign days to the value of a (hidden) input in the form
+    $('#fuel_type').val(fueltype);
+}
+
 });
+

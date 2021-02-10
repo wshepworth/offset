@@ -29,6 +29,23 @@
                 <input class="form-control" id="to_places" placeholder="Enter a location"/>
                 <input id="destination" name="destination" required="" type="hidden"/>
             </div>
+
+            <div class="form-group">
+                <label class="form-check-label">Car type</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="petrol" name="type-answer" value="Petrol">
+                    <label class="form-check-label" for="petrol"> Petrol</label><br>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="diesel" name="type-answer" value="Diesel">
+                    <label class="form-check-label" for="diesel"> Diesel</label><br>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="unknown" name="type-answer" value="Unknown">
+                    <label class="form-check-label" for="unknown"> I don't know</label><br>
+                </div>
+                <input id="fuel_type" name="car_type" required="" type="hidden"/>
+            </div>
             
             <input class="btn btn-primary" id="submit_btn" type="submit" value="Calculate" />
 
