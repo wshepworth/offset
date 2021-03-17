@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.njk
+layout: layouts/post.njk
 pageClass: posts
 templateEngineOverride: njk, md
 ---

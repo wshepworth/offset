@@ -1,5 +1,5 @@
 ---
-title: Carbon offset calculator
-subtitle: An experiment by Will to make the planet greener
-layout: layouts/base.njk
+title: Silva
+subtitle: A carbon offset experiment by Will
+layout: layouts/calculator.njk
 ---
